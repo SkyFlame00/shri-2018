@@ -1,0 +1,1006 @@
+@font-face
+  font-family: HelveticaNeue
+  src: url(../fonts/helvetica-neue/HelveticaNeueCyr-Light.ttf)
+
+@font-face
+  font-family: HelveticaNeueMedium
+  src: url(../fonts/helvetica-neue/HelveticaNeueCyr-Medium.ttf)
+
+@font-face
+  font-family: HelveticaNeueBold
+  src: url(../fonts/helvetica-neue/HelveticaNeueCyr-Bold.ttf)
+
+*
+  margin: 0
+  padding: 0
+
+html, body
+  width: 100%
+  height: 100%
+
+body
+  position: relative
+
+.font
+  &-light
+    font-family: HelveticaNeue
+  &-medium
+    font-family: HelveticaNeueMedium
+  &-bold
+    font-family: HelveticaNeueBold
+
+.clearfix::after
+  display: block
+  clear: both
+  content: ''
+
+.container
+  height: 100%
+
+// Серая полоска, играющая роль border'a в таймлайне десктопной версии (от 1024px),
+// растягивающаяся на весь экран (это нужно, поскольку контент имеет макс. ширину в 1280px)
+.desktop-gray-strip
+  display: none
+  position: absolute
+  width: 100%
+  height: 1px
+  top: 116px
+  left: 0
+  background: #e9ecef
+  z-index: 10
+
+// m-top - верхняя часть, включающая шапку и календарь в мобильной версии (при разрешении меньше 1024 пикс.)
+// и только шапку в десктопной версии (больше 1024 пикс.), календарь в десктопной версии лежит в .m-wrapper .m-content .timeline.
+// Префикс 'm' - рудимент от мобильной версии. Изначально предполагалось, что мобильная и десктопная версия будут жестко разграничены,
+// т.е. я думал, что при переходе от "десктопного" к "мобильного" разрешения и наоборот буду рендерить разный, соответствующий для них, контент.
+// Но потом я сумел сделать адаптивный дизайн, и переход теперь осуществляется плавно при помощи медиа-запросов: без рендеринга контента и изменения DOM-дерева.
+// Убрать ненужный префикс сейчас проблематично: остается крайне мало времени и аккуратно вычленить его из различных кусков верстки и кода я уже не успеваю
+.m-top
+  position: sticky
+  width: 100%
+  top: 0
+  left: 0
+  height: calc(48px + 56px)
+  background: white
+  z-index: 1000
+  .h-wrapper
+    .h
+      width: 100%
+      height: 48px
+      .logo-container
+        padding-top: 15.8px
+        padding-left: 20.5px
+        .logo
+          display: block
+          width: 149px
+          height: 20.9px
+          background-image: url(../img/logo.svg)
+          background-repeat: no-repeat
+          background-size: 100%
+      .h-createMeeting-container
+        display: none
+        float: right
+        padding-top: 17px
+        padding-right: 24px
+        .h-createMeeting-btn
+          display: inline-block
+          min-width: 140px
+          height: 36px
+          line-height: 39px
+          background: #007dff
+          color: white
+          font-size: 13px
+          text-decoration: none
+          text-align: center
+          border-radius: 4px
+          letter-spacing: 0
+          transition: .2s linear
+          border-radius: 4px
+          &:hover
+            background: #0058ff
+          &:focus
+            background: #0011fe
+  // Блок с календарем в мобильной версии
+  .bar-date
+    position: relative
+    height: 54px
+    border-top: 1px solid #e9ecef
+    border-bottom: 1px solid #e9ecef
+    .change-day
+      display: block
+      width: 32px
+      height: 32px
+      margin-top: 11px
+      background: #E9ECEF
+      background-repeat: no-repeat
+      border: none
+      border-radius: 100px
+      outline: none
+      transition: .2s linear
+    .prev-day
+      float: left
+      margin-left: 16px
+      margin-right: 16px
+      background-image: url(../img/arrow-normal.svg)
+      background-size: 27%
+      background-position: 42% 50%
+      transition: .2s linear
+    .next-day
+      float: right
+      margin-left: 16px
+      margin-right: 16px
+      background-image: url(../img/arrow-normal.svg)
+      background-size: 27%
+      background-position: 46% 50%
+      transform: rotate(180deg)
+    .change-day:focus
+      background-image: url(../img/arrow-pressed.svg)
+    .text
+      display: block
+      float: left
+      width: calc(100% - 128px)
+      line-height: 54px
+      font-family: HelveticaNeueMedium
+      font-size: 15px
+      color: #000000
+      letter-spacing: 0
+      transition: .1s linear
+      cursor: pointer
+      text-align: center
+      &:hover
+        color: #0070E0
+    // Появляющееся окно календаря
+    .calendar-window
+      position: absolute
+      width: 100%
+      padding: 20px 0
+      top: 55px
+      background: #FFFFFF
+      box-shadow: 0 1px 16px 0 rgba(0,44,92,0.28)
+      border-radius: 0 0 8px 8px
+      box-sizing: border-box
+      z-index: 920
+      .calendar-top
+        .calendar-window-header
+          margin-bottom: 20px
+          font-family: HelveticaNeueMedium
+          font-size: 18px
+          text-align: center
+      .calendar-window-body
+        .calendar
+          margin: 0 auto
+          font-family: HelveticaNeue
+          text-align: center
+          border: 1px solid #e9ecef
+          input.m-calendar-day
+            width: 100%
+            padding: 12px 11px 10px 11px
+            font-size: 13px
+            transition: .2s linear
+            background: #eaedf047
+            font-family: HelveticaNeue
+            cursor: pointer
+            border: none
+            outline: none
+            &:hover
+              background: #e9ecef
+          tbody
+            .calendar-today
+              background: #0070E0
+              color: white
+              font-family: HelveticaNeueMedium
+              &:hover
+                background: #0070E0
+            td
+              &.calendar-day-excluded
+                background: none
+                border: 1px dashed #eaedf0
+                cursor: default
+                &:hover
+                  background: none
+          thead
+            font-family: HelveticaNeue
+            td
+              padding: 12px 11px 10px 11px
+            tr:first-child td
+              background: #e9ecef
+              font-size: 15px
+            tr:nth-child(2) td
+              font-family: HelveticaNeueMedium
+              font-size: 13px
+      .calendar-btns
+        margin-top: 20px
+        text-align: center
+        .calendar-btn
+          display: inline-block
+          height: 32px
+          line-height: 35px
+          background: #e9ecef
+          color: black
+          font-size: 15px
+          font-family: HelveticaNeue
+          outline: none
+          border: none
+          border-radius: 10px
+          cursor: pointer
+          transition: .4s linear
+        .calendar-prev-btn
+          padding: 0 12px 0 6px
+          margin-right: 10px
+          &::before
+            display: block
+            float: left
+            content: ''
+            width: 16px
+            height: 16px
+            margin-top: 8px
+            margin-right: 5px
+            background-image: url(../img/arrow-normal.svg)
+            background-position: 50%
+            background-repeat: no-repeat
+            vertical-align: middle
+        .calendar-next-btn
+          padding: 0 7px 0 12px
+          &::after
+            display: block
+            float: right
+            content: ''
+            width: 16px
+            height: 16px
+            margin-top: 8px
+            margin-left: 5px
+            background-image: url(../img/arrow-normal.svg)
+            background-position: 50%
+            background-repeat: no-repeat
+            vertical-align: middle
+            transform: rotate(180deg)
+
+// Основной контент, т.е. сетка. Префикс 'm' здесь имеет такую же сущность, как и в 'm-top'. К сожалению,
+// его пришлось тоже оставить так. m-wrapper занимает всю оставшуюся после шапки страницу.
+.m-wrapper
+  display: block
+  height: calc(100% - 104px)
+  box-sizing: border-box
+  overflow: auto
+  .m-content
+    position: relative
+    height: 100%
+    .timeline
+      position: sticky
+      height: 32px
+      top: 0
+      background: white
+      border-bottom: 1px solid #e9ecef
+      z-index: 301
+      box-sizing: border-box
+      // .current-time-strip - синяя линия текущего времени. Линия состоит из трех частей:
+      // шапки (header), и двух самих по себе линий: одна маленькая и размещается в таймлайне (шкала с часами),
+      // другая - большая, и рендерится вместе с элементами .line
+      .current-time-strip-header
+        position: absolute
+        width: 49px
+        height: 20px
+        margin-top: 6px
+        margin-left: calc(233px - 24.5px)
+        background: #007DFF
+        color: white
+        font-family: HelveticaNeueBold
+        font-size: 11px
+        text-align: center
+        line-height: 22px
+        border-radius: 100px
+        z-index: 100
+        letter-spacing: 0.4px
+      .current-time-strip-smallpart
+        position: absolute
+        width: 1px
+        height: 6px
+        top: 0
+        margin-left: 233px
+        margin-top: 26px
+        background: #007DFF
+        z-index: 100
+    .current-time-strip-bigpart
+      position: absolute
+      width: 1px
+      top: 0
+      margin-left: 233px
+      background: #007DFF
+      margin-top: 32px
+      z-index: 100
+    // Серая линия сетки
+    .line
+      position: absolute
+      width: 1px
+      height: calc(100% - 32px)
+      top: 0
+      margin-top: 32px
+      margin-left: (181px + 52px)
+      background: rgba(19,100,205,0.10)
+      z-index: 10
+    // Час на таймлайне
+    .hour
+      position: absolute
+      height: 13px
+      top: 0
+      margin-top: 12px
+      margin-left: (181px + 52px)
+      font-family: HelveticaNeueBold
+      font-size: 11px
+      color: #262626
+      letter-spacing: 0.4px
+      text-align: center
+      &-passed
+          color: #858E98
+    .rooms
+      .floor
+        height: 45px
+        padding-top: 21px
+        background: #f7f8f9
+        box-sizing: border-box
+        span
+          position: sticky
+          left: 16px
+          font-family: HelveticaNeueBold
+          font-size: 11px
+          color: #858E98
+          letter-spacing: 0.4px
+          z-index: 200
+      .first-floor
+        height: 36px
+        padding-top: 12px
+      .room
+        position: relative
+        height: 58px
+        border-bottom: 2px solid #f7f8f9
+        .room-name-notifier-wrapper
+          position: absolute
+          width: 100%
+          height: 0
+          .room-name-notifier
+            display: none
+            position: sticky
+            left: 11px
+            padding: 7px 8px 5px 8px
+            background: #FFFFFF
+            font-family: HelveticaNeueBold
+            font-size: 11px
+            color: #262626
+            letter-spacing: 0.4px
+            box-shadow: 0 1px 8px 0 rgba(0,44,92,0.28)
+            border-radius: 4px
+            z-index: 101
+            &-blocked
+              color: #858E98
+        &-blocked
+          color: #858E98
+        .info
+          float: left
+          width: 181px
+          height: 100%
+          padding-top: 14px
+          padding-left: 16px
+          line-height: 17px
+          border-right: 1px solid #e9ecef
+          box-sizing: border-box
+          .name
+            font-family: HelveticaNeueMedium
+            font-size: 15px
+            transition: .2s linear
+          .room-name-active
+            color: #0070E0
+          .room-name-clicked
+            color: #1D54FE
+          .capacity
+            font-family: HelveticaNeue
+            font-size: 13px
+        &-timeline
+          float: left
+          position: relative
+          width: calc(100% - 181px)
+          height: 100%
+          background: #D5DFE9
+          .empty-area
+            position: absolute
+            height: 100%
+            margin-left: 52px
+            background: white
+            &:hover
+              border-radius: 2px 0 0 2px
+              z-index: 101
+              .add-event-btn
+                opacity: 1
+            .add-event-btn
+              position: absolute
+              left: 0
+              top: 0
+              width: 57px
+              height: 100%
+              line-height: 100%
+              background: #2b50fd
+              color: white
+              text-align: center
+              font-size: 17px
+              font-family: HelveticaNeueMedium
+              border-radius: 2px
+              cursor: pointer
+              border: none
+              outline: none
+              opacity: 0
+              transition: .2s linear
+              &:focus
+                background: #1D00FE
+          .filled-area
+            position: absolute
+            height: 100%
+            margin-left: 52px
+            background: #bbcad9
+            transition: .2s linear
+            cursor: pointer
+            &:hover
+              background: rgba(152,169,185,0.6)
+            &-clicked
+              background: #98A9B9 !important
+              z-index: 300
+            .tooltip-triangle
+              position: absolute
+              content: ''
+              bottom: 0
+              border: 9px solid transparent
+              border-bottom: 9px solid white
+              z-index: 911
+              cursor: default
+            .tooltip
+              position: absolute
+              top: 100%
+              background: #FFFFFF
+              box-shadow: 0 1px 16px 0 rgba(0,44,92,0.28)
+              border-radius: 8px
+              z-index: 300
+              cursor: default
+              .edit
+                position: absolute
+                width: 24px
+                height: 24px
+                top: 8px
+                right: 8px
+                background-color: #E9ECEF
+                background-image: url(../img/edit-normal.svg)
+                background-repeat: no-repeat
+                background-position: 50%
+                border: none
+                border-radius: 50%
+                outline: none
+                cursor: pointer
+                transition: .2s linear
+                &:focus
+                  background-image: url(../img/edit-pressed.svg)
+              .tooltip-content
+                margin: 17px 17px 12px 17px
+                .tooltip-header
+                  font-family: HelveticaNeueBold
+                  font-size: 15px
+                  color: #000000
+                  letter-spacing: 0
+                  line-height: 24px
+                .tooltip-body
+                  margin-top: 2px
+                  font-family: HelveticaNeue
+                  font-size: 13px
+                  color: #000000
+                  letter-spacing: 0
+                  line-height: 17px
+                .tooltip-participants
+                  margin-top: 16px
+                  font-family: HelveticaNeue
+                  font-size: 13px
+                  color: #000000
+                  letter-spacing: 0
+                  line-height: 17px
+                  .avatar
+                    display: block
+                    float: left
+                    width: 24px
+                    height: 24px
+                    background: #E9ECEF
+                    margin-right: 8px
+                    border-radius: 50%
+                  p
+                    line-height: 25px
+                    .tooltip-others
+                      color: #87909a
+
+// Десктопный календарь
+.d-bar-date-wrapper
+  display: none
+  float: left
+  width: 246px
+  height: 100%
+  .d-bar-date
+    position: relative
+    margin-top: 11px
+    margin-left: 24px
+    height: 24px
+    .change-day
+      display: block
+      float: left
+      width: 24px
+      height: 24px
+      background: #E9ECEF
+      background-repeat: no-repeat
+      border: none
+      border-radius: 100px
+      outline: none
+      transition: .2s linear
+      cursor: pointer
+    .prev-day
+      background-image: url(../img/arrow-normal.svg)
+      background-position: 44% 50%
+    .next-day
+      background-image: url(../img/arrow-normal.svg)
+      background-position: 46% 50%
+      transform: rotate(180deg)
+    .prev-day:focus, .next-day:focus
+      background-image: url(../img/arrow-pressed.svg)
+    &-text
+      display: block
+      float: left
+      margin: 0 12.5px 0 13.5px
+      line-height: 26px
+      font-family: HelveticaNeueMedium
+      font-size: 15px
+      color: #000000
+      letter-spacing: 0
+      transition: .1s linear
+      cursor: pointer
+      &:hover
+        color: #0070E0
+
+.create-meeting-window
+  display: none
+  position: absolute
+  width: 100%
+  height: calc(100% - 48px)
+  top: 0
+  left: 0
+  margin-top: 48px
+  background: white
+  border-top: 1px solid #e9ecef
+  box-sizing: border-box
+  overflow-y: auto
+  z-index: 2000
+  .create-meeting-container
+    width: 100%
+    margin: auto
+    margin-top: 25px
+    padding-bottom: 123px
+    .create-meeting-header
+      position: relative
+      margin: 0 16px
+      font-family: HelveticaNeueBold
+      font-size: 20px
+      color: #000000
+      letter-spacing: 0
+      line-height: 24px
+      .create-meeting-close
+        position: absolute
+        top: 0
+        right: 0
+        width: 24px
+        height: 24px
+        background-color: #E9ECEF
+        background-image: url(../img/close.svg)
+        background-repeat: no-repeat
+        background-position: 50%
+        border: none
+        outline: none
+        border-radius: 100px
+        transition: .2s linear
+        cursor: pointer
+        &:focus
+          background-image: url(../img/close-pressed.svg)
+    .create-meeting-body
+      .level-1 .level-right
+        .input-date-wrapper
+          width: 100%
+        .time-common-wrapper
+          margin-top: 8px
+        .input-start-wrapper, .input-end-wrapper
+          float: left
+          width: calc(50% - 11px)
+          label
+            display: none
+          input
+            float: left
+            width: 100%
+        .input-data-separator-wrapper
+          float: left
+          width: 22px
+          height: 100%
+          line-height: 44px
+          padding: 0 4px
+          font-family: HelveticaNeueBold
+          font-size: 13px
+          color: #000000
+          letter-spacing: 0.47px
+          text-align: center
+          box-sizing: border-box
+      .level-2 .level-left
+        padding-top: 20px
+        padding-bottom: 20px
+        border-top: 8px solid #E9ECEF
+        border-bottom: 8px solid #E9ECEF
+        .input-decorator
+          position: relative
+          padding-bottom: 2px
+          .input-participants-list
+            &-active
+              border-color: #007DFF
+          .input-action-wrapper
+            display: block
+            width: 30px
+            height: calc(100% - 6px)
+            .input-hidelist
+              display: none
+              position: absolute
+              width: 14px
+              height: 14px
+              top: calc(50% - 7px)
+              right: 14px
+              background-color: transparent
+              background-image: url(../img/arrow-pressed.svg)
+              background-repeat: no-repeat
+              background-position: 36%
+              transform: rotate(-90deg)
+              transition: .2s linear
+              border: none
+              outline: none
+              cursor: pointer
+            .input-eraser
+              display: none
+              position: absolute
+              width: 11.9px
+              height: 11.9px
+              top: calc(50% - 5.95px)
+              right: 14.1px
+              background-color: transparent
+              background-image: url(../img/close.svg)
+              background-repeat: no-repeat
+              background-size: 100%
+              border: none
+              outline: none
+              cursor: pointer
+              transition: .2s linear
+              &:focus
+                background-image: url(../img/close-pressed.svg)
+        .participants-selected
+          .participant-selected
+            position: relative
+            height: 32px
+            margin-top: 8px
+            background: #E9ECEF
+            border-radius: 16px
+            transition: .2s linear
+            &-avatar
+              float: left
+              width: 32px
+              height: 32px
+              background-color: #dbdee2
+              border-radius: 50%
+            &-text
+              float: left
+              margin-top: 9px
+              margin-left: 8px
+              font-family: HelveticaNeue
+              font-size: 15px
+              color: #000000
+              letter-spacing: 0
+              line-height: 17px
+            &-delete
+              position: absolute
+              width: 11.9px
+              height: 11.9px
+              top: 10px
+              right: 14.1px
+              background-color: transparent
+              background-image: url(../img/close.svg)
+              background-repeat: no-repeat
+              background-size: 100%
+              border: none
+              outline: none
+              cursor: pointer
+              transition: .2s linear
+              &:focus
+                background-image: url(../img/close-pressed.svg)
+      .level-item
+        margin-top: 16px
+        padding: 0 16px
+        label
+          display: block
+          margin-bottom: 4px
+          font-family: HelveticaNeueBold
+          font-size: 13px
+          color: #000000
+          letter-spacing: 0
+        input.base
+          width: 100%
+          padding: 14px 8px 11px 8px
+          background: #FFFFFF
+          font-family: HelveticaNeue
+          font-size: 15px
+          color: black
+          letter-spacing: 0
+          border: 2px solid #E9ECEF
+          border-radius: 4px
+          box-sizing: border-box
+          outline: none
+          transition: .2s linear
+          &:hover
+            border-color: #68b2ff
+          &:focus
+            border-color: #007DFF
+          &::-webkit-input-placeholder
+            font-size: 15px
+            color: #858E98
+            transition: .1s linear
+          &:hover::-webkit-input-placeholder
+            color: white
+          &:focus::-webkit-input-placeholder
+            color: white
+          &::-moz-placeholder
+            font-size: 15px
+            color: #858E98
+            transition: .1s linear
+          &:hover::-moz-placeholder
+            color: white
+          &:focus::-moz-placeholder
+            color: white
+          &:-moz-placeholder
+            font-size: 15px
+            color: #858E98
+            transition: .1s linear
+          &:hover:-moz-placeholder
+            color: white
+          &:focus:-moz-placeholder
+            color: white
+          &:-ms-input-placeholder
+            font-size: 15px
+            color: #858E98
+            transition: .1s linear
+          &:hover:-ms-input-placeholder
+            color: white
+          &:focus:-ms-input-placeholder
+            color: white
+        .input-decorator
+          position: relative
+        .input-action-wrapper
+          display: none
+          position: absolute
+          width: 30px
+          height: calc(100% - 4px)
+          top: 2px
+          right: 2px
+          background: white
+          border-radius: 0 4px 4px 0
+          .input-eraser
+            position: absolute
+            width: 11.9px
+            height: 11.9px
+            top: 14px
+            right: 14.1px
+            background-image: url(../img/close.svg)
+            background-repeat: no-repeat
+            background-size: 100%
+            cursor: pointer
+          .input-calendar-picker
+            position: absolute
+            width: 12px
+            height: 12px
+            top: 14px
+            right: 14px
+            background-image: url(../img/calendar-grey.svg)
+            background-repeat: no-repeat
+            background-size: 100%
+            cursor: pointer
+        .recommended-meetingrooms-header
+          margin-bottom: 4px
+          font-family: HelveticaNeueBold
+          font-size: 13px
+          color: #000000
+          letter-spacing: 0
+        .recommended-meetingroom
+          position: relative
+          padding: 13px 12px 11px 12px
+          margin-bottom: 8px
+          background: #E9ECEF
+          border-radius: 4px
+          transition: .2s linear
+          cursor: pointer
+          &:hover
+            background: #DDE0E4
+          &-selected
+            background: #007DFF
+            .recommended-meetingroom-time
+              color: white !important
+            .recommended-meetingroom-place
+              color: white !important
+            &:hover
+              background: #007DFF
+          &-close
+            display: none
+            position: absolute
+            width: 14px
+            height: 14px
+            top: calc(50% - 7px)
+            right: 14.1px
+            background-image: url(../img/close-white.svg)
+            background-repeat: no-repeat
+            background-size: 100%
+          .recommended-meetingroom-time
+            font-family: HelveticaNeueBold
+            font-size: 15px
+            color: #000000
+            letter-spacing: 0
+            line-height: 17px
+            transition: .2s linear
+          .recommended-meetingroom-place
+            margin-left: 10px
+            font-family: HelveticaNeue
+            font-size: 15px
+            color: #000000
+            letter-spacing: 0
+            line-height: 17px
+            transition: .2s linear
+
+// Блок подтверждения создания встречи
+.cm-submit-container
+    position: fixed
+    width: 100%
+    left: 0
+    bottom: 0
+    z-index: 2020
+    .cm-submit-hint
+      width: 100%
+      padding: 15px 16px 13px 16px
+      background: rgba(0,16,33,0.80)
+      p
+        color: white
+        font-family: HelveticaNeueBold
+        font-size: 15px
+    .cm-submit-wrapper
+      width: 100%
+      background: white
+      box-shadow: 0 -1px 0 0 #E9ECEF
+      text-align: center
+      .cm-submit-body
+        padding: 16px 0 20px 0
+        .cm-submit-btn
+          padding: 16px 57px 13px 57px
+          background: #E5E5E5
+          font-family: HelveticaNeueMedium
+          font-size: 15px
+          color: #8B8E92
+          border-radius: 4px
+          border: none
+          outline: none
+          transition: .2s linear
+          cursor: default
+          &-active
+            background: #007DFF
+            color: white
+            border-radius: 4px
+            cursor: pointer
+            &:focus
+              background: #007DFF
+              background: #0059FF
+              border-radius: 4px
+        .cm-submit-cancel
+          display: none
+
+// Календарь в окне создания встречи (cm=createMeeting)
+.cm-calendar-window
+  position: absolute
+  width: 100%
+  padding: 20px 0
+  top: 100%
+  background: #FFFFFF
+  box-shadow: 0 1px 16px 0 rgba(0,44,92,0.28)
+  border-radius: 8px
+  box-sizing: border-box
+  z-index: 920
+  .calendar-top
+    .calendar-window-header
+      margin-bottom: 20px
+      font-family: HelveticaNeueMedium
+      font-size: 18px
+      text-align: center
+  .calendar-window-body
+    .calendar
+      margin: 0 auto
+      font-family: HelveticaNeue
+      text-align: center
+      border: 1px solid #e9ecef
+      td
+        font-size: 13px
+      tbody
+        td input.calendar-today.cm-calendar-day
+          background: #0070E0
+          color: white
+          &:hover
+            background: #0070E0
+        td input.cm-calendar-day
+          width: 100%
+          padding: 12px 11px 10px 11px
+          transition: .2s linear
+          background: #eaedf047
+          font-family: HelveticaNeue
+          border: none
+          outline: none
+          cursor: pointer
+          &:hover
+            background: #e9ecef
+        td.calendar-day-excluded
+          background: none
+          border: 1px dashed #eaedf0
+          cursor: default
+          &:hover
+            background: none
+      thead
+        font-family: HelveticaNeue
+        td
+          padding: 12px 11px 10px 11px
+        tr:first-child td
+          background: #e9ecef
+          font-size: 15px
+        tr:nth-child(2) td
+          font-family: HelveticaNeueMedium
+  .calendar-btns
+    margin-top: 20px
+    text-align: center
+    .cm-calendar-btn
+      display: inline-block
+      height: 32px
+      line-height: 35px
+      background: #e9ecef
+      color: black
+      font-size: 15px
+      font-family: HelveticaNeue
+      outline: none
+      border: none
+      border-radius: 10px
+      cursor: pointer
+      transition: .4s linear
+      &:hover
+        background: #dde0e4
+      &:focus
+        background: #c7cdd3
+    .calendar-prev-btn
+      padding: 0 12px 0 6px
+      margin-right: 10px
+      &::before
+        display: block
+        float: left
+        content: ''
+        width: 16px
+        height: 16px
+        margin-top: 8px
+        margin-right: 5px
+        background-image: url(../img/arrow-normal.svg)
+        background-position: 50%
+        background-repeat: no-repeat
+        vertical-align: middle
+    .calendar-next-btn
+      padding: 0 7px 0 12px
+      &::after
+        display: block
+        float: right
+        content: ''
+        width: 16px
+        height: 16px
+        margin-top: 8px
+        margin-left: 5px
+        background-image: url(../img/arrow-normal.svg)
+        background-position: 50%
+        background-repeat: no-repeat
+        vertical-align: middle
+        transform: rotate(180deg)

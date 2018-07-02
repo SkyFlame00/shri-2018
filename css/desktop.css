@@ -1,0 +1,95 @@
+.container .m-wrapper .m-content .sidebar-end {
+  display: none;
+  width: 245px;
+  background: white;
+  border-right: 1px solid #e9ecef;
+  box-sizing: border-box; }
+
+.d-calendar-window {
+  display: none;
+  position: absolute;
+  padding: 10px;
+  top: calc(100% + 11px);
+  background: #FFFFFF;
+  box-shadow: 0 1px 8px 0 rgba(0, 44, 92, 0.28);
+  border-radius: 4px;
+  z-index: 1005;
+  box-sizing: border-box; }
+  .d-calendar-window-body {
+    width: 100%; }
+    .d-calendar-window-body .calendar {
+      float: left;
+      margin-left: 20px;
+      font-family: HelveticaNeue;
+      text-align: center;
+      border: 1px solid #e9ecef; }
+      .d-calendar-window-body .calendar:first-child {
+        margin-left: 0; }
+      .d-calendar-window-body .calendar input.d-calendar-day {
+        width: 100%;
+        padding: 8px 7px 6px 7px;
+        font-size: 11px;
+        transition: .2s linear;
+        background: #eaedf047;
+        font-family: HelveticaNeue;
+        cursor: pointer;
+        border: none;
+        outline: none; }
+        .d-calendar-window-body .calendar input.d-calendar-day:hover {
+          background: #e9ecef; }
+      .d-calendar-window-body .calendar tbody .calendar-today {
+        background: #0070E0;
+        color: white;
+        font-family: HelveticaNeueMedium; }
+        .d-calendar-window-body .calendar tbody .calendar-today:hover {
+          background: #0070E0; }
+      .d-calendar-window-body .calendar tbody td.calendar-day-excluded {
+        background: none;
+        border: 1px dashed #eaedf0;
+        cursor: default; }
+        .d-calendar-window-body .calendar tbody td.calendar-day-excluded:hover {
+          background: none; }
+      .d-calendar-window-body .calendar thead {
+        font-family: HelveticaNeue; }
+        .d-calendar-window-body .calendar thead td {
+          padding: 8px 7px 6px 7px;
+          font-size: 11px; }
+        .d-calendar-window-body .calendar thead tr:first-child td {
+          background: #e9ecef;
+          font-size: 13px; }
+        .d-calendar-window-body .calendar thead tr:nth-child(2) td {
+          font-family: HelveticaNeueMedium; }
+  .d-calendar-window .d-calendar-top {
+    min-height: 24px;
+    margin-top: 4px;
+    margin-bottom: 10px; }
+    .d-calendar-window .d-calendar-top .d-calendar-window-header {
+      margin-left: 4px;
+      font-family: HelveticaNeueMedium;
+      font-size: 17px;
+      line-height: 24px; }
+    .d-calendar-window .d-calendar-top .d-calendar-btns {
+      float: right;
+      margin-right: 4px; }
+      .d-calendar-window .d-calendar-top .d-calendar-btns .d-calendar-btn {
+        display: inline-block;
+        width: 40px;
+        height: 24px;
+        background-color: #e9ecef;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        transition: .2s linear; }
+      .d-calendar-window .d-calendar-top .d-calendar-btns .d-calendar-prev-btn {
+        background-image: url(../img/arrow-normal.svg);
+        background-position: 46% 50%; }
+      .d-calendar-window .d-calendar-top .d-calendar-btns .d-calendar-next-btn {
+        margin-left: 4px;
+        background-image: url(../img/arrow-normal.svg);
+        background-position: 50% 50%;
+        transform: rotate(180deg); }
+      .d-calendar-window .d-calendar-top .d-calendar-btns .d-calendar-prev-btn:focus, .d-calendar-window .d-calendar-top .d-calendar-btns .d-calendar-next-btn:focus {
+        background-image: url(../img/arrow-pressed.svg); }

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>ШРИ 2018</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/autocomplete.css">
+    <script src="libs/jquery-3.2.1.min.js"></script>
+    <script src="libs/autocomplete/auto-complete.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/initialization.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/strip-motion-realistic.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container" id="container">
+
+      <div class="desktop-gray-strip" id="desktop-gray-strip"></div>
+
+      <div class="m-top" id="m-top">
+
+        <div class="h-wrapper">
+          <header class="h">
+            <div class="logo-container">
+              <a href="#" class="logo"></a>
+            </div>
+
+            <div class="h-createMeeting-container">
+              <a href="#" id="h-createMeeting-btn" class="h-createMeeting-btn font-medium">Создать встречу</a>
+            </div>
+
+          </header>
+        </div>
+
+        <div class="bar-date">
+
+          <input type="button" class="change-day prev-day">
+          <span class="text" id="bar-date-text">14 дек · Сегодня</span>
+          <input type="button" href="#" class="change-day next-day">
+
+          <div class="calendar-window" id="calendar-window">
+            <div class="calendar-top">
+              <div class="calendar-window-header">Выберите день</div>
+            </div>
+
+            <div class="calendar-window-body clearfix" id="calendar-window-body"></div>
+
+            <div class="calendar-btns clearfix" id="calendar-btns">
+              <span href="#" class="calendar-btn calendar-prev-btn" id="calendar-prev-btn"></span>
+              <span href="#" class="calendar-btn calendar-next-btn" id="calendar-next-btn"></span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="m-wrapper" id="m-wrapper">
+        <div class="m-content" id="m-content">
+
+          <div class="timeline" id="timeline">
+            <div class="d-bar-date-wrapper">
+
+              <div class="d-bar-date clearfix">
+                <input type="button" class="change-day prev-day">
+                <span class="d-bar-date-text" id="d-bar-date-text">14 дек · Сегодня</span>
+                <input type="button" class="change-day next-day">
+
+                <div class="d-calendar-window" id="d-calendar-window">
+
+                  <div class="d-calendar-top">
+                    <div class="d-calendar-btns">
+                      <input class="d-calendar-btn d-calendar-prev-btn" id="d-calendar-prev-btn" type="button">
+                      <input class="d-calendar-btn d-calendar-next-btn" id="d-calendar-next-btn" type="button">
+                    </div>
+
+                    <div class="d-calendar-window-header">Выберите день</div>
+                  </div>
+
+                  <div class="d-calendar-window-body clearfix" id="d-calendar-window-body"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="rooms">
+
+            <div class="floor first-floor">
+              <span>7 ЭТАЖ</span>
+            </div>
+
+            <div class="room room-blocked clearfix" id="room-1">
+              <div class="info">
+                <div class="name">Ржавый Фред</div>
+                <div class="capacity">3—6 человек</div>
+              </div>
+              <div class="room-timeline">
+              </div>
+            </div>
+
+            <div class="room clearfix" id="room-2">
+              <div class="info">
+                <div class="name">Прачечная</div>
+                <div class="capacity">до 10 человек</div>
+              </div>
+              <div class="room-timeline"></div>
+            </div>
+
+            <div class="room clearfix" id="room-3">
+              <div class="info">
+                <div class="name">Желтый дом</div>
+                <div class="capacity">до 10 человек</div>
+              </div>
+              <div class="room-timeline"></div>
+            </div>
+
+            <div class="room room-blocked clearfix" id="room-4">
+              <div class="info">
+                <div class="name">Оранжевый тюльпан</div>
+                <div class="capacity">3—6 человек</div>
+              </div>
+              <div class="room-timeline"></div>
+            </div>
+
+            <div class="floor">
+              <span>6 ЭТАЖ</span>
+            </div>
+
+            <div class="room clearfix" id="room-5">
+              <div class="info">
+                <div class="name">Джокер</div>
+                <div class="capacity">3—6 человек</div>
+              </div>
+              <div class="room-timeline"></div>
+            </div>
+
+            <div class="room clearfix" id="room-6">
+              <div class="info">
+                <div class="name">Мариванна</div>
+                <div class="capacity">3—6 человек</div>
+              </div>
+              <div class="room-timeline"></div>
+            </div>
+
+            <div class="room clearfix" id="room-7">
+              <div class="info">
+                <div class="name">Тонкий Боб</div>
+                <div class="capacity">3—6 человек</div>
+              </div>
+              <div class="room-timeline"></div>
+            </div>
+
+            <div class="room clearfix" id="room-8">
+              <div class="info">
+                <div class="name">Черная вдова</div>
+                <div class="capacity">3—6 человек</div>
+              </div>
+              <div class="room-timeline"></div>
+            </div>
+
+            <div class="room clearfix" id="room-9">
+              <div class="info">
+                <div class="name">Белорусский ликер</div>
+                <div class="capacity">3—6 человек</div>
+              </div>
+              <div class="room-timeline"></div>
+            </div>
+
+          </div>
+
+          <div class="sidebar-end" id="sidebar-end"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="create-meeting-window" id="create-meeting-window">
+
+      <div class="create-meeting-container" id="create-meeting-container">
+
+        <div class="create-meeting-header">
+          <span>Новая встреча</span>
+          <input class="create-meeting-close" type="button">
+        </div>
+
+        <form class="create-meeting-body">
+
+          <div class="level level-1 clearfix">
+            <div class="level-item level-left title" id="create-meeting-specify-title">
+              <label>Тема</label>
+              <div class="input-decorator">
+                <input class="base" type="text" placeholder="О чём будете говорить?" />
+                <div class="input-action-wrapper">
+                  <div class="input-eraser"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="level-item level-right">
+
+              <div class="input-date-wrapper" id="input-date-wrapper">
+                <label>Дата</label>
+                <div class="input-decorator input-decorator-date">
+                  <input class="base cm-input-date" id="cm-input-date" type="text" />
+                  <div class="input-action-wrapper">
+                    <div class="input-calendar-picker" id="input-calendar-picker"></div>
+                  </div>
+
+                  <div class="cm-calendar-window" id="cm-calendar-window"> <!-- cm = create-meeting -->
+                    <div class="calendar-top">
+                      <div class="calendar-window-header">Выберите день</div>
+                    </div>
+
+                    <div class="calendar-window-body clearfix" id="cm-calendar-window-body"></div>
+
+                    <div class="calendar-btns clearfix" id="cm-calendar-btns">
+                      <span class="cm-calendar-btn calendar-prev-btn" id="cm-calendar-prev-btn"></span>
+                      <span class="cm-calendar-btn calendar-next-btn" id="cm-calendar-next-btn"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="time-common-wrapper clearfix">
+                <div class="input-start-wrapper">
+                  <label>Начало</label>
+                  <input class="base" type="text">
+                </div>
+
+                <div class="input-data-separator-wrapper">
+                  <div class="input-data-separator">—</div>
+                </div>
+
+                <div class="input-end-wrapper">
+                  <label>Конец</label>
+                  <input class="base" type="text">
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="level level-2 clearfix">
+
+            <div class="level-item level-left" id="create-meeting-specify-participants">
+              <label>Участники</label>
+              <div class="input-decorator">
+                <input name="input-participants-list" class="base" class="input-participants-list" id="input-participants-list" type="text" placeholder="Например, Тор Одинович">
+                <div class="input-action-wrapper" id="participants-input-action-wrapper">
+                  <input type="button" class="input-hidelist" id="participants-input-hidelist">
+                  <input type="button" class="input-eraser" id="participants-input-eraser">
+                </div>
+              </div>
+              <div class="participants-selected" id="participants-selected"></div>
+            </div>
+
+            <div class="level-item level-right recommended-meetingrooms" id="create-meeting-specify-meetingroom">
+              <div class="recommended-meetingrooms-header">Рекомендованные переговорки</div>
+              <div class="recommended-meetingroom" id="meetingroom-1">
+                <span class="recommended-meetingroom-time">16:00 — 17:00</span>
+                <span class="recommended-meetingroom-place">Готем · 4 этаж</span>
+                <div class="recommended-meetingroom-close"></div>
+              </div>
+
+              <div class="recommended-meetingroom" id="meetingroom-2">
+                <span class="recommended-meetingroom-time">16:00 — 17:00</span>
+                <span class="recommended-meetingroom-place">Поле непаханное · 4 этаж</span>
+                <div class="recommended-meetingroom-close"></div>
+              </div>
+
+              <div class="recommended-meetingroom" id="meetingroom-3">
+                <span class="recommended-meetingroom-time">16:00 — 17:00</span>
+                <span class="recommended-meetingroom-place">Темная башня · 4 этаж</span>
+                <div class="recommended-meetingroom-close"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+
+      <div class="cm-submit-container">
+        <div class="cm-submit-hint">
+          <p>Выберите переговорку</p>
+        </div>
+
+        <div class="cm-submit-wrapper">
+          <div class="cm-submit-body">
+            <input class="cm-submit-cancel" id="cm-submit-cancel" type="button" value="Отмена">
+            <input class="cm-submit-btn" id="cm-submit-btn" type="submit" value="Создать встречу">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+
+</html>

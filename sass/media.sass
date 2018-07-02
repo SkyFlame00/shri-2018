@@ -1,0 +1,330 @@
+@media screen and (min-width: 1280px)
+  .container
+    .h-wrapper
+      .h
+        width: 1280px
+    .m-wrapper
+      width: 1280px
+      overflow: initial
+      .m-content
+        width: 1260px
+        .timeline
+          .current-time-strip-header
+            margin-left: calc(276px - 24.5px)
+          .current-time-strip-smallpart
+            margin-left: 276px
+          .current-time-strip-bigpart
+            margin-left: 276px
+        .rooms
+          .room-timeline
+            .empty-area
+              margin-left: 31px
+            .filled-area
+              margin-left: 31px
+
+@media screen and (min-width: 1024px)
+  .desktop-gray-strip
+    display: block
+  .d-bar-date-wrapper
+    display: block
+  .container
+    .m-top
+      position: static
+      height: auto
+      .h-wrapper
+        border-bottom: 1px solid #e9ecef
+        .h
+          height: 70px
+          margin: 0 auto
+          .logo-container
+            float: left
+            padding-top: 24px
+            padding-left: 0
+            .logo
+              width: 173.9px
+              height: 24.4px
+              margin-left: 24.6px
+          .h-createMeeting-container
+            display: block
+      .bar-date
+        display: none
+    .m-wrapper
+      height: calc(100% - 73px)
+      margin: 0 auto
+      padding-top: 0
+      .m-content
+        background: #F6F7F9
+        .timeline
+          position: sticky
+          height: 46px
+          top: 0
+          background: white
+          border-bottom: 1px solid #e9ecef
+          .current-time-strip-header
+            margin-top: 13px
+            margin-left: calc(276px - 24.5px)
+          .current-time-strip-smallpart
+            height: 13px
+            margin-top: 33px
+            margin-left: 276px
+        .current-time-strip-bigpart
+          margin-top: 46px
+          margin-left: 276px
+        .rooms
+          background: #F6F7F9
+          .floor
+            width: 245px
+            height: auto
+            padding-top: 24px
+            padding-left: 25px
+            background: white
+            border-right: 1px solid #e9ecef
+            span
+              position: static
+            & + .room
+              .info
+                padding-top: 10px
+              .room-timeline
+                margin-top: 14px
+              .room-name-notifier-wrapper
+                margin-top: 18px
+          .room
+            position: relative
+            height: auto
+            border-bottom: none
+            .room-name-notifier-wrapper
+              //display: none
+            .info
+              width: 245px
+              height: auto
+              padding-left: 25px
+              background: white
+              border-right: 1px solid #e9ecef
+              .name
+                line-height: 17px
+              .capacity
+                padding-top: 2px
+                line-height: 17px
+            .room-timeline
+              width: calc(100% - 245px)
+              height: 28px
+              margin-top: 18px
+              .empty-area
+                margin-left: 31px
+            .room-name-notifier-wrapper
+              margin-top: 22px
+            .filled-area
+              margin-left: 31px
+              &:hover
+                background: #98a9b9
+                z-index: 300
+        .sidebar-end
+          display: block
+        .line
+          margin-top: 46px
+          margin-left: calc(245px + 31px)
+        .hour
+          margin-top: 19px
+          margin-left: calc(245px + 31px)
+  .create-meeting-window
+    height: calc(100% - 71px)
+    margin-top: 71px
+
+@media screen and (min-width: 1280px) and (max-width: 1290px)
+  .container
+    .h-wrapper
+      .h
+        width: 1260px
+    .m-wrapper
+      width: 1260px
+      overflow: initial
+      overflow-x: hidden
+      .m-content
+        width: 1260px
+        .timeline
+          .current-time-strip-header
+            margin-left: calc(256px - 24.5px)
+          .current-time-strip-smallpart
+            margin-left: 256px
+        .current-time-strip-bigpart
+          margin-left: 256px
+        .line
+          margin-left: (245px + 11px)
+        .hour
+          margin-left: (245px + 11px)
+        .rooms
+          .room
+            .room-timeline
+              .empty-area
+                margin-left: 11px
+              .filled-area
+                margin-left: 11px
+
+@media screen and (min-width: 910px)
+  .create-meeting-window
+    .create-meeting-container
+      width: 872px
+      margin: auto
+      margin-top: 32px
+      .create-meeting-header
+        margin: 0
+        padding: 0
+        .create-meeting-close
+      .create-meeting-body
+        .level
+          .level-item
+            float: left
+            width: 420px
+            margin-top: 0
+            padding: 0
+            box-sizing: border-box
+            &.level-right
+              margin-left: 32px
+            .input-decorator
+              &.input-decorator-date
+                float: left
+              .cm-input-date
+                width: 238px
+                float: left
+          &.level-1
+            margin-top: 20px
+            .level-right
+              .input-date-wrapper
+                float: left
+                width: auto
+              .time-common-wrapper
+                float: left
+                margin-top: 0
+                margin-left: 16px
+              .input-start-wrapper, .input-end-wrapper
+                width: 72px
+                label
+                  display: block
+              .input-data-separator-wrapper
+                width: 18px
+                line-height: 0
+                margin-top: 40px
+                padding: 0
+                letter-spacing: 0
+          &.level-2
+            margin-top: 24px
+            .level-left
+              border: none
+              .participants-selected
+                .participant-selected
+                  display: inline-block
+                  height: 24px
+                  padding-right: 36px
+                  .participant-selected-avatar
+                    width: 24px
+                    height: 24px
+                  .participant-selected-text
+                    margin-top: 5px
+                    font-size: 13px
+                  .participant-selected-delete
+                    width: 9.1px
+                    height: 9.1px
+                    top: calc(50% - 4.55px)
+  .cm-calendar-window
+    width: 320px
+    .calendar-top
+      .calendar-window-header
+        font-size: 17px
+    .calendar-window-body
+      .calendar
+        thead
+          td
+            padding: 10px 9px 8px 9px
+        tbody
+          td
+            input.cm-calendar-day
+              padding: 10px 9px 8px 9px
+    .calendar-btns
+      .cm-calendar-btn
+        font-size: 13px
+  .cm-submit-container
+      .cm-submit-hint
+        display: none
+        p
+      .cm-submit-wrapper
+        .cm-submit-body
+          padding: 20px 0
+          border-top: 1px solid #e9ecef
+          .cm-submit-btn
+            padding: 13px 16px 10px 16px
+            background: #007DFF
+            color: white
+            font-size: 13px
+            cursor: pointer
+            &:hover
+              background: #0058ff
+            &:focus
+              background: #0011fe
+          .cm-submit-cancel
+            display: inline-block
+            margin-right: 12px
+            padding: 13px 16px 10px 16px
+            background: #E9ECEF
+            font-family: HelveticaNeueMedium
+            font-size: 13px
+            color: #000000
+            letter-spacing: 0
+            border-radius: 4px
+            border: none
+            outline: none
+            transition: .2s linear
+            cursor: pointer
+            &:hover
+              background: #dde0e4
+            &:focus
+              background: #c7cdd3
+
+@media screen and (min-width: 0) and (max-width: 350px)
+  .cm-calendar-window
+    width: 100%
+    padding-left: 10px
+    padding-right: 10px
+    .calendar
+      width: 100%
+      thead td, tbody td input.cm-calendar-day
+        padding: 8px 0% !important
+    .calendar-btns
+      width: 100% !important
+      .cm-calendar-btn
+        float: none
+        width: 100%
+        box-sizing: border-box
+      .calendar-prev-btn
+        margin-right: 0
+        margin-bottom: 10px
+        text-align: left
+      .calendar-next-btn
+        text-align: right
+
+@media screen and (min-width: 0) and (max-width: 310px)
+  .m-top
+    .bar-date
+      .calendar-window
+        width: 100%
+        padding-left: 10px
+        padding-right: 10px
+        .calendar-window-body
+          .calendar
+            width: 100%
+            input.m-calendar-day
+              padding: 8px 0% !important
+            thead
+              td
+                padding: 8px 0% !important
+        .calendar-btns
+          width: 100% !important
+          .calendar-btn
+            float: none
+            width: 100%
+            box-sizing: border-box
+          .calendar-prev-btn
+            margin-right: 0
+            margin-bottom: 10px
+            text-align: left
+          .calendar-next-btn
+            text-align: right

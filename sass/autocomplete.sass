@@ -1,0 +1,58 @@
+.participants-list-wrapper
+  display: none
+  position: absolute
+  width: 100%
+  min-height: 34px
+  max-height: 136px !important
+  top: 100% !important
+  left: 0 !important
+  background: #FFFFFF
+  box-shadow: 0 1px 10px 0 rgba(0,44,92,0.28)
+  border-radius: 4px
+  overflow-y: auto
+  z-index: 2010 !important
+  &.participants-list-wrapper-displayed
+    display: block !important
+  &.participants-list-wrapper-displayedNone
+    display: none !important
+  .participants-list-empty
+    display: block
+    margin-top: 11px
+    margin-left: 11px
+    color: #858E98
+    font-size: 15px
+    font-family: HelveticaNeue
+  .participant-li
+    display: block
+    height: 34px
+    cursor: pointer
+    &:hover
+      background: #F6F7F9
+      .participant-text
+        font-family: HelveticaNeueBold
+    .participant-li-displayNone
+      display: none !important
+    .participant-avatar
+      float: left
+      width: 24px
+      height: 24px
+      margin-top: 5px
+      margin-left: 16px
+      background-color: #E9ECEF
+      border-radius: 50%
+    .participant-text
+      float: left
+      margin-top: 10px
+      margin-left: 8px
+      font-family: HelveticaNeue
+      font-size: 13px
+      letter-spacing: 0
+      .participant-name
+        color: #000000
+        .participant-found
+          font-family: HelveticaNeueBold
+      .participant-item-separator
+        color: #000000
+      .participant-place
+        color: #858e98
+        line-height: 16px

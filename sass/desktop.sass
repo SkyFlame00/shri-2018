@@ -1,0 +1,103 @@
+.container
+  .m-wrapper
+    .m-content
+      // sidebar-end - класс для блока, который используется в "сайдбаре" для заполнения
+      // свободного места белым цветом (поскольку фон сетки - серо-синий)
+      .sidebar-end
+        display: none
+        width: 245px
+        background: white
+        border-right: 1px solid #e9ecef
+        box-sizing: border-box
+
+// Календарь (точнее, окошко из 3-х календарей). Появляется при разрешении от 1024px
+.d-calendar-window
+  display: none
+  position: absolute
+  padding: 10px
+  top: calc(100% + 11px)
+  background: #FFFFFF
+  box-shadow: 0 1px 8px 0 rgba(0,44,92,0.28)
+  border-radius: 4px
+  z-index: 1005
+  box-sizing: border-box
+  &-body
+    width: 100%
+    .calendar
+      float: left
+      margin-left: 20px
+      font-family: HelveticaNeue
+      text-align: center
+      border: 1px solid #e9ecef
+      &:first-child
+        margin-left: 0
+      input.d-calendar-day
+        width: 100%
+        padding: 8px 7px 6px 7px
+        font-size: 11px
+        transition: .2s linear
+        background: #eaedf047
+        font-family: HelveticaNeue
+        cursor: pointer
+        border: none
+        outline: none
+        &:hover
+          background: #e9ecef
+      tbody
+        .calendar-today
+          background: #0070E0
+          color: white
+          font-family: HelveticaNeueMedium
+          &:hover
+            background: #0070E0
+        td
+          &.calendar-day-excluded
+            background: none
+            border: 1px dashed #eaedf0
+            cursor: default
+            &:hover
+              background: none
+      thead
+        font-family: HelveticaNeue
+        td
+          padding: 8px 7px 6px 7px
+          font-size: 11px
+        tr:first-child td
+          background: #e9ecef
+          font-size: 13px
+        tr:nth-child(2) td
+          font-family: HelveticaNeueMedium
+  .d-calendar-top
+    min-height: 24px
+    margin-top: 4px
+    margin-bottom: 10px
+    .d-calendar-window-header
+      margin-left: 4px
+      font-family: HelveticaNeueMedium
+      font-size: 17px
+      line-height: 24px
+    .d-calendar-btns
+      float: right
+      margin-right: 4px
+      .d-calendar-btn
+        display: inline-block
+        width: 40px
+        height: 24px
+        background-color: #e9ecef
+        background-repeat: no-repeat
+        background-position: 50% 50%
+        border-radius: 4px
+        border: none
+        cursor: pointer
+        outline: none
+        transition: .2s linear
+      .d-calendar-prev-btn
+        background-image: url(../img/arrow-normal.svg)
+        background-position: 46% 50%
+      .d-calendar-next-btn
+        margin-left: 4px
+        background-image: url(../img/arrow-normal.svg)
+        background-position: 50% 50%
+        transform: rotate(180deg)
+      .d-calendar-prev-btn:focus, .d-calendar-next-btn:focus
+        background-image: url(../img/arrow-pressed.svg)

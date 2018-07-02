@@ -1,0 +1,294 @@
+@media screen and (min-width: 1280px) {
+  .container .h-wrapper .h {
+    width: 1280px; }
+  .container .m-wrapper {
+    width: 1280px;
+    overflow: initial; }
+    .container .m-wrapper .m-content {
+      width: 1260px; }
+      .container .m-wrapper .m-content .timeline .current-time-strip-header {
+        margin-left: calc(276px - 24.5px); }
+      .container .m-wrapper .m-content .timeline .current-time-strip-smallpart {
+        margin-left: 276px; }
+      .container .m-wrapper .m-content .timeline .current-time-strip-bigpart {
+        margin-left: 276px; }
+      .container .m-wrapper .m-content .rooms .room-timeline .empty-area {
+        margin-left: 31px; }
+      .container .m-wrapper .m-content .rooms .room-timeline .filled-area {
+        margin-left: 31px; } }
+
+@media screen and (min-width: 1024px) {
+  .desktop-gray-strip {
+    display: block; }
+  .d-bar-date-wrapper {
+    display: block; }
+  .container .m-top {
+    position: static;
+    height: auto; }
+    .container .m-top .h-wrapper {
+      border-bottom: 1px solid #e9ecef; }
+      .container .m-top .h-wrapper .h {
+        height: 70px;
+        margin: 0 auto; }
+        .container .m-top .h-wrapper .h .logo-container {
+          float: left;
+          padding-top: 24px;
+          padding-left: 0; }
+          .container .m-top .h-wrapper .h .logo-container .logo {
+            width: 173.9px;
+            height: 24.4px;
+            margin-left: 24.6px; }
+        .container .m-top .h-wrapper .h .h-createMeeting-container {
+          display: block; }
+    .container .m-top .bar-date {
+      display: none; }
+  .container .m-wrapper {
+    height: calc(100% - 73px);
+    margin: 0 auto;
+    padding-top: 0; }
+    .container .m-wrapper .m-content {
+      background: #F6F7F9; }
+      .container .m-wrapper .m-content .timeline {
+        position: sticky;
+        height: 46px;
+        top: 0;
+        background: white;
+        border-bottom: 1px solid #e9ecef; }
+        .container .m-wrapper .m-content .timeline .current-time-strip-header {
+          margin-top: 13px;
+          margin-left: calc(276px - 24.5px); }
+        .container .m-wrapper .m-content .timeline .current-time-strip-smallpart {
+          height: 13px;
+          margin-top: 33px;
+          margin-left: 276px; }
+      .container .m-wrapper .m-content .current-time-strip-bigpart {
+        margin-top: 46px;
+        margin-left: 276px; }
+      .container .m-wrapper .m-content .rooms {
+        background: #F6F7F9; }
+        .container .m-wrapper .m-content .rooms .floor {
+          width: 245px;
+          height: auto;
+          padding-top: 24px;
+          padding-left: 25px;
+          background: white;
+          border-right: 1px solid #e9ecef; }
+          .container .m-wrapper .m-content .rooms .floor span {
+            position: static; }
+          .container .m-wrapper .m-content .rooms .floor + .room .info {
+            padding-top: 10px; }
+          .container .m-wrapper .m-content .rooms .floor + .room .room-timeline {
+            margin-top: 14px; }
+          .container .m-wrapper .m-content .rooms .floor + .room .room-name-notifier-wrapper {
+            margin-top: 18px; }
+        .container .m-wrapper .m-content .rooms .room {
+          position: relative;
+          height: auto;
+          border-bottom: none; }
+          .container .m-wrapper .m-content .rooms .room .info {
+            width: 245px;
+            height: auto;
+            padding-left: 25px;
+            background: white;
+            border-right: 1px solid #e9ecef; }
+            .container .m-wrapper .m-content .rooms .room .info .name {
+              line-height: 17px; }
+            .container .m-wrapper .m-content .rooms .room .info .capacity {
+              padding-top: 2px;
+              line-height: 17px; }
+          .container .m-wrapper .m-content .rooms .room .room-timeline {
+            width: calc(100% - 245px);
+            height: 28px;
+            margin-top: 18px; }
+            .container .m-wrapper .m-content .rooms .room .room-timeline .empty-area {
+              margin-left: 31px; }
+          .container .m-wrapper .m-content .rooms .room .room-name-notifier-wrapper {
+            margin-top: 22px; }
+          .container .m-wrapper .m-content .rooms .room .filled-area {
+            margin-left: 31px; }
+            .container .m-wrapper .m-content .rooms .room .filled-area:hover {
+              background: #98a9b9;
+              z-index: 300; }
+      .container .m-wrapper .m-content .sidebar-end {
+        display: block; }
+      .container .m-wrapper .m-content .line {
+        margin-top: 46px;
+        margin-left: calc(245px + 31px); }
+      .container .m-wrapper .m-content .hour {
+        margin-top: 19px;
+        margin-left: calc(245px + 31px); }
+  .create-meeting-window {
+    height: calc(100% - 71px);
+    margin-top: 71px; } }
+
+@media screen and (min-width: 1280px) and (max-width: 1290px) {
+  .container .h-wrapper .h {
+    width: 1260px; }
+  .container .m-wrapper {
+    width: 1260px;
+    overflow: initial;
+    overflow-x: hidden; }
+    .container .m-wrapper .m-content {
+      width: 1260px; }
+      .container .m-wrapper .m-content .timeline .current-time-strip-header {
+        margin-left: calc(256px - 24.5px); }
+      .container .m-wrapper .m-content .timeline .current-time-strip-smallpart {
+        margin-left: 256px; }
+      .container .m-wrapper .m-content .current-time-strip-bigpart {
+        margin-left: 256px; }
+      .container .m-wrapper .m-content .line {
+        margin-left: 256px; }
+      .container .m-wrapper .m-content .hour {
+        margin-left: 256px; }
+      .container .m-wrapper .m-content .rooms .room .room-timeline .empty-area {
+        margin-left: 11px; }
+      .container .m-wrapper .m-content .rooms .room .room-timeline .filled-area {
+        margin-left: 11px; } }
+
+@media screen and (min-width: 910px) {
+  .create-meeting-window .create-meeting-container {
+    width: 872px;
+    margin: auto;
+    margin-top: 32px; }
+    .create-meeting-window .create-meeting-container .create-meeting-header {
+      margin: 0;
+      padding: 0; }
+    .create-meeting-window .create-meeting-container .create-meeting-body .level .level-item {
+      float: left;
+      width: 420px;
+      margin-top: 0;
+      padding: 0;
+      box-sizing: border-box; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level .level-item.level-right {
+        margin-left: 32px; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level .level-item .input-decorator.input-decorator-date {
+        float: left; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level .level-item .input-decorator .cm-input-date {
+        width: 238px;
+        float: left; }
+    .create-meeting-window .create-meeting-container .create-meeting-body .level.level-1 {
+      margin-top: 20px; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level.level-1 .level-right .input-date-wrapper {
+        float: left;
+        width: auto; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level.level-1 .level-right .time-common-wrapper {
+        float: left;
+        margin-top: 0;
+        margin-left: 16px; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level.level-1 .level-right .input-start-wrapper, .create-meeting-window .create-meeting-container .create-meeting-body .level.level-1 .level-right .input-end-wrapper {
+        width: 72px; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level.level-1 .level-right .input-start-wrapper label, .create-meeting-window .create-meeting-container .create-meeting-body .level.level-1 .level-right .input-end-wrapper label {
+          display: block; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level.level-1 .level-right .input-data-separator-wrapper {
+        width: 18px;
+        line-height: 0;
+        margin-top: 40px;
+        padding: 0;
+        letter-spacing: 0; }
+    .create-meeting-window .create-meeting-container .create-meeting-body .level.level-2 {
+      margin-top: 24px; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level.level-2 .level-left {
+        border: none; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level.level-2 .level-left .participants-selected .participant-selected {
+          display: inline-block;
+          height: 24px;
+          padding-right: 36px; }
+          .create-meeting-window .create-meeting-container .create-meeting-body .level.level-2 .level-left .participants-selected .participant-selected .participant-selected-avatar {
+            width: 24px;
+            height: 24px; }
+          .create-meeting-window .create-meeting-container .create-meeting-body .level.level-2 .level-left .participants-selected .participant-selected .participant-selected-text {
+            margin-top: 5px;
+            font-size: 13px; }
+          .create-meeting-window .create-meeting-container .create-meeting-body .level.level-2 .level-left .participants-selected .participant-selected .participant-selected-delete {
+            width: 9.1px;
+            height: 9.1px;
+            top: calc(50% - 4.55px); }
+  .cm-calendar-window {
+    width: 320px; }
+    .cm-calendar-window .calendar-top .calendar-window-header {
+      font-size: 17px; }
+    .cm-calendar-window .calendar-window-body .calendar thead td {
+      padding: 10px 9px 8px 9px; }
+    .cm-calendar-window .calendar-window-body .calendar tbody td input.cm-calendar-day {
+      padding: 10px 9px 8px 9px; }
+    .cm-calendar-window .calendar-btns .cm-calendar-btn {
+      font-size: 13px; }
+  .cm-submit-container .cm-submit-hint {
+    display: none; }
+  .cm-submit-container .cm-submit-wrapper .cm-submit-body {
+    padding: 20px 0;
+    border-top: 1px solid #e9ecef; }
+    .cm-submit-container .cm-submit-wrapper .cm-submit-body .cm-submit-btn {
+      padding: 13px 16px 10px 16px;
+      background: #007DFF;
+      color: white;
+      font-size: 13px;
+      cursor: pointer; }
+      .cm-submit-container .cm-submit-wrapper .cm-submit-body .cm-submit-btn:hover {
+        background: #0058ff; }
+      .cm-submit-container .cm-submit-wrapper .cm-submit-body .cm-submit-btn:focus {
+        background: #0011fe; }
+    .cm-submit-container .cm-submit-wrapper .cm-submit-body .cm-submit-cancel {
+      display: inline-block;
+      margin-right: 12px;
+      padding: 13px 16px 10px 16px;
+      background: #E9ECEF;
+      font-family: HelveticaNeueMedium;
+      font-size: 13px;
+      color: #000000;
+      letter-spacing: 0;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      transition: .2s linear;
+      cursor: pointer; }
+      .cm-submit-container .cm-submit-wrapper .cm-submit-body .cm-submit-cancel:hover {
+        background: #dde0e4; }
+      .cm-submit-container .cm-submit-wrapper .cm-submit-body .cm-submit-cancel:focus {
+        background: #c7cdd3; } }
+
+@media screen and (min-width: 0) and (max-width: 350px) {
+  .cm-calendar-window {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px; }
+    .cm-calendar-window .calendar {
+      width: 100%; }
+      .cm-calendar-window .calendar thead td, .cm-calendar-window .calendar tbody td input.cm-calendar-day {
+        padding: 8px 0% !important; }
+    .cm-calendar-window .calendar-btns {
+      width: 100% !important; }
+      .cm-calendar-window .calendar-btns .cm-calendar-btn {
+        float: none;
+        width: 100%;
+        box-sizing: border-box; }
+      .cm-calendar-window .calendar-btns .calendar-prev-btn {
+        margin-right: 0;
+        margin-bottom: 10px;
+        text-align: left; }
+      .cm-calendar-window .calendar-btns .calendar-next-btn {
+        text-align: right; } }
+
+@media screen and (min-width: 0) and (max-width: 310px) {
+  .m-top .bar-date .calendar-window {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px; }
+    .m-top .bar-date .calendar-window .calendar-window-body .calendar {
+      width: 100%; }
+      .m-top .bar-date .calendar-window .calendar-window-body .calendar input.m-calendar-day {
+        padding: 8px 0% !important; }
+      .m-top .bar-date .calendar-window .calendar-window-body .calendar thead td {
+        padding: 8px 0% !important; }
+    .m-top .bar-date .calendar-window .calendar-btns {
+      width: 100% !important; }
+      .m-top .bar-date .calendar-window .calendar-btns .calendar-btn {
+        float: none;
+        width: 100%;
+        box-sizing: border-box; }
+      .m-top .bar-date .calendar-window .calendar-btns .calendar-prev-btn {
+        margin-right: 0;
+        margin-bottom: 10px;
+        text-align: left; }
+      .m-top .bar-date .calendar-window .calendar-btns .calendar-next-btn {
+        text-align: right; } }

@@ -1,0 +1,974 @@
+@font-face {
+  font-family: HelveticaNeue;
+  src: url(../fonts/helvetica-neue/HelveticaNeueCyr-Light.ttf); }
+
+@font-face {
+  font-family: HelveticaNeueMedium;
+  src: url(../fonts/helvetica-neue/HelveticaNeueCyr-Medium.ttf); }
+
+@font-face {
+  font-family: HelveticaNeueBold;
+  src: url(../fonts/helvetica-neue/HelveticaNeueCyr-Bold.ttf); }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  position: relative; }
+
+.font-light {
+  font-family: HelveticaNeue; }
+
+.font-medium {
+  font-family: HelveticaNeueMedium; }
+
+.font-bold {
+  font-family: HelveticaNeueBold; }
+
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: ''; }
+
+.container {
+  height: 100%; }
+
+.desktop-gray-strip {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 116px;
+  left: 0;
+  background: #e9ecef;
+  z-index: 10; }
+
+.m-top {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: calc(48px + 56px);
+  background: white;
+  z-index: 1000; }
+  .m-top .h-wrapper .h {
+    width: 100%;
+    height: 48px; }
+    .m-top .h-wrapper .h .logo-container {
+      padding-top: 15.8px;
+      padding-left: 20.5px; }
+      .m-top .h-wrapper .h .logo-container .logo {
+        display: block;
+        width: 149px;
+        height: 20.9px;
+        background-image: url(../img/logo.svg);
+        background-repeat: no-repeat;
+        background-size: 100%; }
+    .m-top .h-wrapper .h .h-createMeeting-container {
+      display: none;
+      float: right;
+      padding-top: 17px;
+      padding-right: 24px; }
+      .m-top .h-wrapper .h .h-createMeeting-container .h-createMeeting-btn {
+        display: inline-block;
+        min-width: 140px;
+        height: 36px;
+        line-height: 39px;
+        background: #007dff;
+        color: white;
+        font-size: 13px;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 4px;
+        letter-spacing: 0;
+        transition: .2s linear;
+        border-radius: 4px; }
+        .m-top .h-wrapper .h .h-createMeeting-container .h-createMeeting-btn:hover {
+          background: #0058ff; }
+        .m-top .h-wrapper .h .h-createMeeting-container .h-createMeeting-btn:focus {
+          background: #0011fe; }
+  .m-top .bar-date {
+    position: relative;
+    height: 54px;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef; }
+    .m-top .bar-date .change-day {
+      display: block;
+      width: 32px;
+      height: 32px;
+      margin-top: 11px;
+      background: #E9ECEF;
+      background-repeat: no-repeat;
+      border: none;
+      border-radius: 100px;
+      outline: none;
+      transition: .2s linear; }
+    .m-top .bar-date .prev-day {
+      float: left;
+      margin-left: 16px;
+      margin-right: 16px;
+      background-image: url(../img/arrow-normal.svg);
+      background-size: 27%;
+      background-position: 42% 50%;
+      transition: .2s linear; }
+    .m-top .bar-date .next-day {
+      float: right;
+      margin-left: 16px;
+      margin-right: 16px;
+      background-image: url(../img/arrow-normal.svg);
+      background-size: 27%;
+      background-position: 46% 50%;
+      transform: rotate(180deg); }
+    .m-top .bar-date .change-day:focus {
+      background-image: url(../img/arrow-pressed.svg); }
+    .m-top .bar-date .text {
+      display: block;
+      float: left;
+      width: calc(100% - 128px);
+      line-height: 54px;
+      font-family: HelveticaNeueMedium;
+      font-size: 15px;
+      color: #000000;
+      letter-spacing: 0;
+      transition: .1s linear;
+      cursor: pointer;
+      text-align: center; }
+      .m-top .bar-date .text:hover {
+        color: #0070E0; }
+    .m-top .bar-date .calendar-window {
+      position: absolute;
+      width: 100%;
+      padding: 20px 0;
+      top: 55px;
+      background: #FFFFFF;
+      box-shadow: 0 1px 16px 0 rgba(0, 44, 92, 0.28);
+      border-radius: 0 0 8px 8px;
+      box-sizing: border-box;
+      z-index: 920; }
+      .m-top .bar-date .calendar-window .calendar-top .calendar-window-header {
+        margin-bottom: 20px;
+        font-family: HelveticaNeueMedium;
+        font-size: 18px;
+        text-align: center; }
+      .m-top .bar-date .calendar-window .calendar-window-body .calendar {
+        margin: 0 auto;
+        font-family: HelveticaNeue;
+        text-align: center;
+        border: 1px solid #e9ecef; }
+        .m-top .bar-date .calendar-window .calendar-window-body .calendar input.m-calendar-day {
+          width: 100%;
+          padding: 12px 11px 10px 11px;
+          font-size: 13px;
+          transition: .2s linear;
+          background: #eaedf047;
+          font-family: HelveticaNeue;
+          cursor: pointer;
+          border: none;
+          outline: none; }
+          .m-top .bar-date .calendar-window .calendar-window-body .calendar input.m-calendar-day:hover {
+            background: #e9ecef; }
+        .m-top .bar-date .calendar-window .calendar-window-body .calendar tbody .calendar-today {
+          background: #0070E0;
+          color: white;
+          font-family: HelveticaNeueMedium; }
+          .m-top .bar-date .calendar-window .calendar-window-body .calendar tbody .calendar-today:hover {
+            background: #0070E0; }
+        .m-top .bar-date .calendar-window .calendar-window-body .calendar tbody td.calendar-day-excluded {
+          background: none;
+          border: 1px dashed #eaedf0;
+          cursor: default; }
+          .m-top .bar-date .calendar-window .calendar-window-body .calendar tbody td.calendar-day-excluded:hover {
+            background: none; }
+        .m-top .bar-date .calendar-window .calendar-window-body .calendar thead {
+          font-family: HelveticaNeue; }
+          .m-top .bar-date .calendar-window .calendar-window-body .calendar thead td {
+            padding: 12px 11px 10px 11px; }
+          .m-top .bar-date .calendar-window .calendar-window-body .calendar thead tr:first-child td {
+            background: #e9ecef;
+            font-size: 15px; }
+          .m-top .bar-date .calendar-window .calendar-window-body .calendar thead tr:nth-child(2) td {
+            font-family: HelveticaNeueMedium;
+            font-size: 13px; }
+      .m-top .bar-date .calendar-window .calendar-btns {
+        margin-top: 20px;
+        text-align: center; }
+        .m-top .bar-date .calendar-window .calendar-btns .calendar-btn {
+          display: inline-block;
+          height: 32px;
+          line-height: 35px;
+          background: #e9ecef;
+          color: black;
+          font-size: 15px;
+          font-family: HelveticaNeue;
+          outline: none;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: .4s linear; }
+        .m-top .bar-date .calendar-window .calendar-btns .calendar-prev-btn {
+          padding: 0 12px 0 6px;
+          margin-right: 10px; }
+          .m-top .bar-date .calendar-window .calendar-btns .calendar-prev-btn::before {
+            display: block;
+            float: left;
+            content: '';
+            width: 16px;
+            height: 16px;
+            margin-top: 8px;
+            margin-right: 5px;
+            background-image: url(../img/arrow-normal.svg);
+            background-position: 50%;
+            background-repeat: no-repeat;
+            vertical-align: middle; }
+        .m-top .bar-date .calendar-window .calendar-btns .calendar-next-btn {
+          padding: 0 7px 0 12px; }
+          .m-top .bar-date .calendar-window .calendar-btns .calendar-next-btn::after {
+            display: block;
+            float: right;
+            content: '';
+            width: 16px;
+            height: 16px;
+            margin-top: 8px;
+            margin-left: 5px;
+            background-image: url(../img/arrow-normal.svg);
+            background-position: 50%;
+            background-repeat: no-repeat;
+            vertical-align: middle;
+            transform: rotate(180deg); }
+
+.m-wrapper {
+  display: block;
+  height: calc(100% - 104px);
+  box-sizing: border-box;
+  overflow: auto; }
+  .m-wrapper .m-content {
+    position: relative;
+    height: 100%; }
+    .m-wrapper .m-content .timeline {
+      position: sticky;
+      height: 32px;
+      top: 0;
+      background: white;
+      border-bottom: 1px solid #e9ecef;
+      z-index: 301;
+      box-sizing: border-box; }
+      .m-wrapper .m-content .timeline .current-time-strip-header {
+        position: absolute;
+        width: 49px;
+        height: 20px;
+        margin-top: 6px;
+        margin-left: calc(233px - 24.5px);
+        background: #007DFF;
+        color: white;
+        font-family: HelveticaNeueBold;
+        font-size: 11px;
+        text-align: center;
+        line-height: 22px;
+        border-radius: 100px;
+        z-index: 100;
+        letter-spacing: 0.4px; }
+      .m-wrapper .m-content .timeline .current-time-strip-smallpart {
+        position: absolute;
+        width: 1px;
+        height: 6px;
+        top: 0;
+        margin-left: 233px;
+        margin-top: 26px;
+        background: #007DFF;
+        z-index: 100; }
+    .m-wrapper .m-content .current-time-strip-bigpart {
+      position: absolute;
+      width: 1px;
+      top: 0;
+      margin-left: 233px;
+      background: #007DFF;
+      margin-top: 32px;
+      z-index: 100; }
+    .m-wrapper .m-content .line {
+      position: absolute;
+      width: 1px;
+      height: calc(100% - 32px);
+      top: 0;
+      margin-top: 32px;
+      margin-left: 233px;
+      background: rgba(19, 100, 205, 0.1);
+      z-index: 10; }
+    .m-wrapper .m-content .hour {
+      position: absolute;
+      height: 13px;
+      top: 0;
+      margin-top: 12px;
+      margin-left: 233px;
+      font-family: HelveticaNeueBold;
+      font-size: 11px;
+      color: #262626;
+      letter-spacing: 0.4px;
+      text-align: center; }
+      .m-wrapper .m-content .hour-passed {
+        color: #858E98; }
+    .m-wrapper .m-content .rooms .floor {
+      height: 45px;
+      padding-top: 21px;
+      background: #f7f8f9;
+      box-sizing: border-box; }
+      .m-wrapper .m-content .rooms .floor span {
+        position: sticky;
+        left: 16px;
+        font-family: HelveticaNeueBold;
+        font-size: 11px;
+        color: #858E98;
+        letter-spacing: 0.4px;
+        z-index: 200; }
+    .m-wrapper .m-content .rooms .first-floor {
+      height: 36px;
+      padding-top: 12px; }
+    .m-wrapper .m-content .rooms .room {
+      position: relative;
+      height: 58px;
+      border-bottom: 2px solid #f7f8f9; }
+      .m-wrapper .m-content .rooms .room .room-name-notifier-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 0; }
+        .m-wrapper .m-content .rooms .room .room-name-notifier-wrapper .room-name-notifier {
+          display: none;
+          position: sticky;
+          left: 11px;
+          padding: 7px 8px 5px 8px;
+          background: #FFFFFF;
+          font-family: HelveticaNeueBold;
+          font-size: 11px;
+          color: #262626;
+          letter-spacing: 0.4px;
+          box-shadow: 0 1px 8px 0 rgba(0, 44, 92, 0.28);
+          border-radius: 4px;
+          z-index: 101; }
+          .m-wrapper .m-content .rooms .room .room-name-notifier-wrapper .room-name-notifier-blocked {
+            color: #858E98; }
+      .m-wrapper .m-content .rooms .room-blocked {
+        color: #858E98; }
+      .m-wrapper .m-content .rooms .room .info {
+        float: left;
+        width: 181px;
+        height: 100%;
+        padding-top: 14px;
+        padding-left: 16px;
+        line-height: 17px;
+        border-right: 1px solid #e9ecef;
+        box-sizing: border-box; }
+        .m-wrapper .m-content .rooms .room .info .name {
+          font-family: HelveticaNeueMedium;
+          font-size: 15px;
+          transition: .2s linear; }
+        .m-wrapper .m-content .rooms .room .info .room-name-active {
+          color: #0070E0; }
+        .m-wrapper .m-content .rooms .room .info .room-name-clicked {
+          color: #1D54FE; }
+        .m-wrapper .m-content .rooms .room .info .capacity {
+          font-family: HelveticaNeue;
+          font-size: 13px; }
+      .m-wrapper .m-content .rooms .room-timeline {
+        float: left;
+        position: relative;
+        width: calc(100% - 181px);
+        height: 100%;
+        background: #D5DFE9; }
+        .m-wrapper .m-content .rooms .room-timeline .empty-area {
+          position: absolute;
+          height: 100%;
+          margin-left: 52px;
+          background: white; }
+          .m-wrapper .m-content .rooms .room-timeline .empty-area:hover {
+            border-radius: 2px 0 0 2px;
+            z-index: 101; }
+            .m-wrapper .m-content .rooms .room-timeline .empty-area:hover .add-event-btn {
+              opacity: 1; }
+          .m-wrapper .m-content .rooms .room-timeline .empty-area .add-event-btn {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 57px;
+            height: 100%;
+            line-height: 100%;
+            background: #2b50fd;
+            color: white;
+            text-align: center;
+            font-size: 17px;
+            font-family: HelveticaNeueMedium;
+            border-radius: 2px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            opacity: 0;
+            transition: .2s linear; }
+            .m-wrapper .m-content .rooms .room-timeline .empty-area .add-event-btn:focus {
+              background: #1D00FE; }
+        .m-wrapper .m-content .rooms .room-timeline .filled-area {
+          position: absolute;
+          height: 100%;
+          margin-left: 52px;
+          background: #bbcad9;
+          transition: .2s linear;
+          cursor: pointer; }
+          .m-wrapper .m-content .rooms .room-timeline .filled-area:hover {
+            background: rgba(152, 169, 185, 0.6); }
+          .m-wrapper .m-content .rooms .room-timeline .filled-area-clicked {
+            background: #98A9B9 !important;
+            z-index: 300; }
+          .m-wrapper .m-content .rooms .room-timeline .filled-area .tooltip-triangle {
+            position: absolute;
+            content: '';
+            bottom: 0;
+            border: 9px solid transparent;
+            border-bottom: 9px solid white;
+            z-index: 911;
+            cursor: default; }
+          .m-wrapper .m-content .rooms .room-timeline .filled-area .tooltip {
+            position: absolute;
+            top: 100%;
+            background: #FFFFFF;
+            box-shadow: 0 1px 16px 0 rgba(0, 44, 92, 0.28);
+            border-radius: 8px;
+            z-index: 300;
+            cursor: default; }
+            .m-wrapper .m-content .rooms .room-timeline .filled-area .tooltip .edit {
+              position: absolute;
+              width: 24px;
+              height: 24px;
+              top: 8px;
+              right: 8px;
+              background-color: #E9ECEF;
+              background-image: url(../img/edit-normal.svg);
+              background-repeat: no-repeat;
+              background-position: 50%;
+              border: none;
+              border-radius: 50%;
+              outline: none;
+              cursor: pointer;
+              transition: .2s linear; }
+              .m-wrapper .m-content .rooms .room-timeline .filled-area .tooltip .edit:focus {
+                background-image: url(../img/edit-pressed.svg); }
+            .m-wrapper .m-content .rooms .room-timeline .filled-area .tooltip .tooltip-content {
+              margin: 17px 17px 12px 17px; }
+              .m-wrapper .m-content .rooms .room-timeline .filled-area .tooltip .tooltip-content .tooltip-header {
+                font-family: HelveticaNeueBold;
+                font-size: 15px;
+                color: #000000;
+                letter-spacing: 0;
+                line-height: 24px; }
+              .m-wrapper .m-content .rooms .room-timeline .filled-area .tooltip .tooltip-content .tooltip-body {
+                margin-top: 2px;
+                font-family: HelveticaNeue;
+                font-size: 13px;
+                color: #000000;
+                letter-spacing: 0;
+                line-height: 17px; }
+              .m-wrapper .m-content .rooms .room-timeline .filled-area .tooltip .tooltip-content .tooltip-participants {
+                margin-top: 16px;
+                font-family: HelveticaNeue;
+                font-size: 13px;
+                color: #000000;
+                letter-spacing: 0;
+                line-height: 17px; }
+                .m-wrapper .m-content .rooms .room-timeline .filled-area .tooltip .tooltip-content .tooltip-participants .avatar {
+                  display: block;
+                  float: left;
+                  width: 24px;
+                  height: 24px;
+                  background: #E9ECEF;
+                  margin-right: 8px;
+                  border-radius: 50%; }
+                .m-wrapper .m-content .rooms .room-timeline .filled-area .tooltip .tooltip-content .tooltip-participants p {
+                  line-height: 25px; }
+                  .m-wrapper .m-content .rooms .room-timeline .filled-area .tooltip .tooltip-content .tooltip-participants p .tooltip-others {
+                    color: #87909a; }
+
+.d-bar-date-wrapper {
+  display: none;
+  float: left;
+  width: 246px;
+  height: 100%; }
+  .d-bar-date-wrapper .d-bar-date {
+    position: relative;
+    margin-top: 11px;
+    margin-left: 24px;
+    height: 24px; }
+    .d-bar-date-wrapper .d-bar-date .change-day {
+      display: block;
+      float: left;
+      width: 24px;
+      height: 24px;
+      background: #E9ECEF;
+      background-repeat: no-repeat;
+      border: none;
+      border-radius: 100px;
+      outline: none;
+      transition: .2s linear;
+      cursor: pointer; }
+    .d-bar-date-wrapper .d-bar-date .prev-day {
+      background-image: url(../img/arrow-normal.svg);
+      background-position: 44% 50%; }
+    .d-bar-date-wrapper .d-bar-date .next-day {
+      background-image: url(../img/arrow-normal.svg);
+      background-position: 46% 50%;
+      transform: rotate(180deg); }
+    .d-bar-date-wrapper .d-bar-date .prev-day:focus, .d-bar-date-wrapper .d-bar-date .next-day:focus {
+      background-image: url(../img/arrow-pressed.svg); }
+    .d-bar-date-wrapper .d-bar-date-text {
+      display: block;
+      float: left;
+      margin: 0 12.5px 0 13.5px;
+      line-height: 26px;
+      font-family: HelveticaNeueMedium;
+      font-size: 15px;
+      color: #000000;
+      letter-spacing: 0;
+      transition: .1s linear;
+      cursor: pointer; }
+      .d-bar-date-wrapper .d-bar-date-text:hover {
+        color: #0070E0; }
+
+.create-meeting-window {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 48px);
+  top: 0;
+  left: 0;
+  margin-top: 48px;
+  background: white;
+  border-top: 1px solid #e9ecef;
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: 2000; }
+  .create-meeting-window .create-meeting-container {
+    width: 100%;
+    margin: auto;
+    margin-top: 25px;
+    padding-bottom: 123px; }
+    .create-meeting-window .create-meeting-container .create-meeting-header {
+      position: relative;
+      margin: 0 16px;
+      font-family: HelveticaNeueBold;
+      font-size: 20px;
+      color: #000000;
+      letter-spacing: 0;
+      line-height: 24px; }
+      .create-meeting-window .create-meeting-container .create-meeting-header .create-meeting-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 24px;
+        height: 24px;
+        background-color: #E9ECEF;
+        background-image: url(../img/close.svg);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        border: none;
+        outline: none;
+        border-radius: 100px;
+        transition: .2s linear;
+        cursor: pointer; }
+        .create-meeting-window .create-meeting-container .create-meeting-header .create-meeting-close:focus {
+          background-image: url(../img/close-pressed.svg); }
+    .create-meeting-window .create-meeting-container .create-meeting-body .level-1 .level-right .input-date-wrapper {
+      width: 100%; }
+    .create-meeting-window .create-meeting-container .create-meeting-body .level-1 .level-right .time-common-wrapper {
+      margin-top: 8px; }
+    .create-meeting-window .create-meeting-container .create-meeting-body .level-1 .level-right .input-start-wrapper, .create-meeting-window .create-meeting-container .create-meeting-body .level-1 .level-right .input-end-wrapper {
+      float: left;
+      width: calc(50% - 11px); }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level-1 .level-right .input-start-wrapper label, .create-meeting-window .create-meeting-container .create-meeting-body .level-1 .level-right .input-end-wrapper label {
+        display: none; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level-1 .level-right .input-start-wrapper input, .create-meeting-window .create-meeting-container .create-meeting-body .level-1 .level-right .input-end-wrapper input {
+        float: left;
+        width: 100%; }
+    .create-meeting-window .create-meeting-container .create-meeting-body .level-1 .level-right .input-data-separator-wrapper {
+      float: left;
+      width: 22px;
+      height: 100%;
+      line-height: 44px;
+      padding: 0 4px;
+      font-family: HelveticaNeueBold;
+      font-size: 13px;
+      color: #000000;
+      letter-spacing: 0.47px;
+      text-align: center;
+      box-sizing: border-box; }
+    .create-meeting-window .create-meeting-container .create-meeting-body .level-2 .level-left {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-top: 8px solid #E9ECEF;
+      border-bottom: 8px solid #E9ECEF; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level-2 .level-left .input-decorator {
+        position: relative;
+        padding-bottom: 2px; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-2 .level-left .input-decorator .input-participants-list-active {
+          border-color: #007DFF; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-2 .level-left .input-decorator .input-action-wrapper {
+          display: block;
+          width: 30px;
+          height: calc(100% - 6px); }
+          .create-meeting-window .create-meeting-container .create-meeting-body .level-2 .level-left .input-decorator .input-action-wrapper .input-hidelist {
+            display: none;
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            top: calc(50% - 7px);
+            right: 14px;
+            background-color: transparent;
+            background-image: url(../img/arrow-pressed.svg);
+            background-repeat: no-repeat;
+            background-position: 36%;
+            transform: rotate(-90deg);
+            transition: .2s linear;
+            border: none;
+            outline: none;
+            cursor: pointer; }
+          .create-meeting-window .create-meeting-container .create-meeting-body .level-2 .level-left .input-decorator .input-action-wrapper .input-eraser {
+            display: none;
+            position: absolute;
+            width: 11.9px;
+            height: 11.9px;
+            top: calc(50% - 5.95px);
+            right: 14.1px;
+            background-color: transparent;
+            background-image: url(../img/close.svg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: .2s linear; }
+            .create-meeting-window .create-meeting-container .create-meeting-body .level-2 .level-left .input-decorator .input-action-wrapper .input-eraser:focus {
+              background-image: url(../img/close-pressed.svg); }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level-2 .level-left .participants-selected .participant-selected {
+        position: relative;
+        height: 32px;
+        margin-top: 8px;
+        background: #E9ECEF;
+        border-radius: 16px;
+        transition: .2s linear; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-2 .level-left .participants-selected .participant-selected-avatar {
+          float: left;
+          width: 32px;
+          height: 32px;
+          background-color: #dbdee2;
+          border-radius: 50%; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-2 .level-left .participants-selected .participant-selected-text {
+          float: left;
+          margin-top: 9px;
+          margin-left: 8px;
+          font-family: HelveticaNeue;
+          font-size: 15px;
+          color: #000000;
+          letter-spacing: 0;
+          line-height: 17px; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-2 .level-left .participants-selected .participant-selected-delete {
+          position: absolute;
+          width: 11.9px;
+          height: 11.9px;
+          top: 10px;
+          right: 14.1px;
+          background-color: transparent;
+          background-image: url(../img/close.svg);
+          background-repeat: no-repeat;
+          background-size: 100%;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          transition: .2s linear; }
+          .create-meeting-window .create-meeting-container .create-meeting-body .level-2 .level-left .participants-selected .participant-selected-delete:focus {
+            background-image: url(../img/close-pressed.svg); }
+    .create-meeting-window .create-meeting-container .create-meeting-body .level-item {
+      margin-top: 16px;
+      padding: 0 16px; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level-item label {
+        display: block;
+        margin-bottom: 4px;
+        font-family: HelveticaNeueBold;
+        font-size: 13px;
+        color: #000000;
+        letter-spacing: 0; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base {
+        width: 100%;
+        padding: 14px 8px 11px 8px;
+        background: #FFFFFF;
+        font-family: HelveticaNeue;
+        font-size: 15px;
+        color: black;
+        letter-spacing: 0;
+        border: 2px solid #E9ECEF;
+        border-radius: 4px;
+        box-sizing: border-box;
+        outline: none;
+        transition: .2s linear; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base:hover {
+          border-color: #68b2ff; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base:focus {
+          border-color: #007DFF; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base::-webkit-input-placeholder {
+          font-size: 15px;
+          color: #858E98;
+          transition: .1s linear; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base:hover::-webkit-input-placeholder {
+          color: white; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base:focus::-webkit-input-placeholder {
+          color: white; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base::-moz-placeholder {
+          font-size: 15px;
+          color: #858E98;
+          transition: .1s linear; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base:hover::-moz-placeholder {
+          color: white; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base:focus::-moz-placeholder {
+          color: white; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base:-moz-placeholder {
+          font-size: 15px;
+          color: #858E98;
+          transition: .1s linear; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base:hover:-moz-placeholder {
+          color: white; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base:focus:-moz-placeholder {
+          color: white; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base:-ms-input-placeholder {
+          font-size: 15px;
+          color: #858E98;
+          transition: .1s linear; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base:hover:-ms-input-placeholder {
+          color: white; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item input.base:focus:-ms-input-placeholder {
+          color: white; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level-item .input-decorator {
+        position: relative; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level-item .input-action-wrapper {
+        display: none;
+        position: absolute;
+        width: 30px;
+        height: calc(100% - 4px);
+        top: 2px;
+        right: 2px;
+        background: white;
+        border-radius: 0 4px 4px 0; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item .input-action-wrapper .input-eraser {
+          position: absolute;
+          width: 11.9px;
+          height: 11.9px;
+          top: 14px;
+          right: 14.1px;
+          background-image: url(../img/close.svg);
+          background-repeat: no-repeat;
+          background-size: 100%;
+          cursor: pointer; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item .input-action-wrapper .input-calendar-picker {
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          top: 14px;
+          right: 14px;
+          background-image: url(../img/calendar-grey.svg);
+          background-repeat: no-repeat;
+          background-size: 100%;
+          cursor: pointer; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level-item .recommended-meetingrooms-header {
+        margin-bottom: 4px;
+        font-family: HelveticaNeueBold;
+        font-size: 13px;
+        color: #000000;
+        letter-spacing: 0; }
+      .create-meeting-window .create-meeting-container .create-meeting-body .level-item .recommended-meetingroom {
+        position: relative;
+        padding: 13px 12px 11px 12px;
+        margin-bottom: 8px;
+        background: #E9ECEF;
+        border-radius: 4px;
+        transition: .2s linear;
+        cursor: pointer; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item .recommended-meetingroom:hover {
+          background: #DDE0E4; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item .recommended-meetingroom-selected {
+          background: #007DFF; }
+          .create-meeting-window .create-meeting-container .create-meeting-body .level-item .recommended-meetingroom-selected .recommended-meetingroom-time {
+            color: white !important; }
+          .create-meeting-window .create-meeting-container .create-meeting-body .level-item .recommended-meetingroom-selected .recommended-meetingroom-place {
+            color: white !important; }
+          .create-meeting-window .create-meeting-container .create-meeting-body .level-item .recommended-meetingroom-selected:hover {
+            background: #007DFF; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item .recommended-meetingroom-close {
+          display: none;
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          top: calc(50% - 7px);
+          right: 14.1px;
+          background-image: url(../img/close-white.svg);
+          background-repeat: no-repeat;
+          background-size: 100%; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item .recommended-meetingroom .recommended-meetingroom-time {
+          font-family: HelveticaNeueBold;
+          font-size: 15px;
+          color: #000000;
+          letter-spacing: 0;
+          line-height: 17px;
+          transition: .2s linear; }
+        .create-meeting-window .create-meeting-container .create-meeting-body .level-item .recommended-meetingroom .recommended-meetingroom-place {
+          margin-left: 10px;
+          font-family: HelveticaNeue;
+          font-size: 15px;
+          color: #000000;
+          letter-spacing: 0;
+          line-height: 17px;
+          transition: .2s linear; }
+
+.cm-submit-container {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: 2020; }
+  .cm-submit-container .cm-submit-hint {
+    width: 100%;
+    padding: 15px 16px 13px 16px;
+    background: rgba(0, 16, 33, 0.8); }
+    .cm-submit-container .cm-submit-hint p {
+      color: white;
+      font-family: HelveticaNeueBold;
+      font-size: 15px; }
+  .cm-submit-container .cm-submit-wrapper {
+    width: 100%;
+    background: white;
+    box-shadow: 0 -1px 0 0 #E9ECEF;
+    text-align: center; }
+    .cm-submit-container .cm-submit-wrapper .cm-submit-body {
+      padding: 16px 0 20px 0; }
+      .cm-submit-container .cm-submit-wrapper .cm-submit-body .cm-submit-btn {
+        padding: 16px 57px 13px 57px;
+        background: #E5E5E5;
+        font-family: HelveticaNeueMedium;
+        font-size: 15px;
+        color: #8B8E92;
+        border-radius: 4px;
+        border: none;
+        outline: none;
+        transition: .2s linear;
+        cursor: default; }
+        .cm-submit-container .cm-submit-wrapper .cm-submit-body .cm-submit-btn-active {
+          background: #007DFF;
+          color: white;
+          border-radius: 4px;
+          cursor: pointer; }
+          .cm-submit-container .cm-submit-wrapper .cm-submit-body .cm-submit-btn-active:focus {
+            background: #007DFF;
+            background: #0059FF;
+            border-radius: 4px; }
+      .cm-submit-container .cm-submit-wrapper .cm-submit-body .cm-submit-cancel {
+        display: none; }
+
+.cm-calendar-window {
+  position: absolute;
+  width: 100%;
+  padding: 20px 0;
+  top: 100%;
+  background: #FFFFFF;
+  box-shadow: 0 1px 16px 0 rgba(0, 44, 92, 0.28);
+  border-radius: 8px;
+  box-sizing: border-box;
+  z-index: 920; }
+  .cm-calendar-window .calendar-top .calendar-window-header {
+    margin-bottom: 20px;
+    font-family: HelveticaNeueMedium;
+    font-size: 18px;
+    text-align: center; }
+  .cm-calendar-window .calendar-window-body .calendar {
+    margin: 0 auto;
+    font-family: HelveticaNeue;
+    text-align: center;
+    border: 1px solid #e9ecef; }
+    .cm-calendar-window .calendar-window-body .calendar td {
+      font-size: 13px; }
+    .cm-calendar-window .calendar-window-body .calendar tbody td input.calendar-today.cm-calendar-day {
+      background: #0070E0;
+      color: white; }
+      .cm-calendar-window .calendar-window-body .calendar tbody td input.calendar-today.cm-calendar-day:hover {
+        background: #0070E0; }
+    .cm-calendar-window .calendar-window-body .calendar tbody td input.cm-calendar-day {
+      width: 100%;
+      padding: 12px 11px 10px 11px;
+      transition: .2s linear;
+      background: #eaedf047;
+      font-family: HelveticaNeue;
+      border: none;
+      outline: none;
+      cursor: pointer; }
+      .cm-calendar-window .calendar-window-body .calendar tbody td input.cm-calendar-day:hover {
+        background: #e9ecef; }
+    .cm-calendar-window .calendar-window-body .calendar tbody td.calendar-day-excluded {
+      background: none;
+      border: 1px dashed #eaedf0;
+      cursor: default; }
+      .cm-calendar-window .calendar-window-body .calendar tbody td.calendar-day-excluded:hover {
+        background: none; }
+    .cm-calendar-window .calendar-window-body .calendar thead {
+      font-family: HelveticaNeue; }
+      .cm-calendar-window .calendar-window-body .calendar thead td {
+        padding: 12px 11px 10px 11px; }
+      .cm-calendar-window .calendar-window-body .calendar thead tr:first-child td {
+        background: #e9ecef;
+        font-size: 15px; }
+      .cm-calendar-window .calendar-window-body .calendar thead tr:nth-child(2) td {
+        font-family: HelveticaNeueMedium; }
+  .cm-calendar-window .calendar-btns {
+    margin-top: 20px;
+    text-align: center; }
+    .cm-calendar-window .calendar-btns .cm-calendar-btn {
+      display: inline-block;
+      height: 32px;
+      line-height: 35px;
+      background: #e9ecef;
+      color: black;
+      font-size: 15px;
+      font-family: HelveticaNeue;
+      outline: none;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: .4s linear; }
+      .cm-calendar-window .calendar-btns .cm-calendar-btn:hover {
+        background: #dde0e4; }
+      .cm-calendar-window .calendar-btns .cm-calendar-btn:focus {
+        background: #c7cdd3; }
+    .cm-calendar-window .calendar-btns .calendar-prev-btn {
+      padding: 0 12px 0 6px;
+      margin-right: 10px; }
+      .cm-calendar-window .calendar-btns .calendar-prev-btn::before {
+        display: block;
+        float: left;
+        content: '';
+        width: 16px;
+        height: 16px;
+        margin-top: 8px;
+        margin-right: 5px;
+        background-image: url(../img/arrow-normal.svg);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        vertical-align: middle; }
+    .cm-calendar-window .calendar-btns .calendar-next-btn {
+      padding: 0 7px 0 12px; }
+      .cm-calendar-window .calendar-btns .calendar-next-btn::after {
+        display: block;
+        float: right;
+        content: '';
+        width: 16px;
+        height: 16px;
+        margin-top: 8px;
+        margin-left: 5px;
+        background-image: url(../img/arrow-normal.svg);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+        transform: rotate(180deg); }
